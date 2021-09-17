@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+
+        we use meta viewport to have the same quality for both phones and computer.
+        link rel allow you to link your css file and your html file
+
+     -->
+    
+
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+
+        <!-- 
+
+            a div is an element that can contains other element.
+         -->
+        <div class="header">
+            <h3 class="title" >SPEED CALCULATOR</h3>
+            <div class="cont">
+                <input type="text" placeholder="Enter your Email To Receive my update..." class="in">
+                <img src="air.png" alt="" height="46px" class="img">
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-one">
+                <img src="speed.jpg" alt="" width="340px" height="300px">
+                <div class="block">
+                    <h4>CALCULATE THE SPEED</h4>
+                    <input type="text" class="in deux" placeholder="Enter The Distance in km" id="distance">
+                    <input type="text" class="in deux" placeholder="Enter The Time in hour" id="time">
+                    <span id="result"></span>
+                    <input type="submit" class="sub" value="CALCULATE" id="submit1">
+                </div>
+            </div>
+            <div class="main-one">
+                <img src="distance.jpg" alt="" width="340px" height="300px">
+                <div class="block">
+                    <h4>CALCULATE THE DISTANCE</h4>
+                    <input type="text" class="in deux" placeholder="Enter The SPEED " id="speed">
+                    <input type="text" class="in deux" placeholder="Enter The Time " id="time2">
+                    <span id="result2"></span>
+                    <input type="submit" id="submit2" class="sub" value="CALCULATE">
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <p>Copyright &copy; Perfect 2021 Lol </p>
+        </div>
+    </div>
+</body>
+
+<script>
+
+
+    /*
+
+    we add an event listenner to the element with the id equal to submit1  to add an event listenner we use the function addEventListener for example.
+
+    -<div class="truc" id="perfect">
+
+    -to select this element and add an eventlistener we will do -> document.getElementById("perfect").addEventListener("click",your function).
+
+    -you can use a lot of event listeners like click,mousemove,load etc...
+
+    this is the first javascript function it allows us to receives user input and to calculate the speed by:
+
+    - the function takes one parameter which is e we will use it to call the preventDefault function so that the webpage will not send the form to the server
+    
+    -creating two variables distance and time. to create a variable in javascript we use the keyword let for example , let perfect = 5;
+
+    - to get the value of a variable in javascript we use the function .value like to get the value of our perfect variable we will do perfect.value
+
+
+    
+    
+    
+    
+    */
+
+
+    //the first line is to select the element with the id submit 1 and we can see that we are adding an event listenner to it so that we can get values 
+
+
+    document.getElementById("submit1").addEventListener("click", function(e) {
+        e.preventDefault();//this line is sed to make the webpage send the data without refresh it.
+        let distance=Number(document.getElementById("distance").value); //we select the value of the element  with id distance and add store it's value inside the variable distance
+        let time=Number(document.getElementById("time").value); //we select the value of the element  with the id time and add store it's value inside the variable distance
+        if(typeof (distance)=="number" &&  typeof (time)=="number"){ //this if statement his function is to help us to prevent the user input remember never trust the user input
+            let speed=distance/time;
+            document.getElementById("result").style.color="#55FF4B";//this allows us to change the color of the result.
+            document.getElementById("result").innerHTML=speed+"km/h"; // innerHTML allows us to add the result in the Dom
+        }
+        else{
+            document.getElementById("result").style.color="red";//we change the color of the input 
+            document.getElementById("result").innerHTML="please enter a good value"; 
+
+
+
+        }
+    });
+    document.getElementById("submit2").addEventListener("click", function(e) {
+        e.preventDefault();//this line is sed to make the webpage send the data without refresh it.
+        let speed=Number(document.getElementById("speed").value); //we select the value of the element  with id distance and add store it's value inside the variable distance
+        let time=Number(document.getElementById("time2").value); //we select the value of the element  with the id time and add store it's value inside the variable distance
+        if(typeof (speed)=="number" &&  typeof (time)=="number"){ //this if statement his function is to help us to prevent the user input remember never trust the user input
+            let distance=speed*time;
+            document.getElementById("result2").style.color="#55FF4B";//this allows us to change the color of the result.
+            document.getElementById("result2").innerHTML=distance+"km"; // innerHTML allows us to add the result in the Dom
+        }
+        else{
+            document.getElementById("result2").style.color="red";//we change the color of the input 
+            document.getElementById("result2").innerHTML="please enter a good value"; 
+
+
+
+        }
+    });
+
+</script>
+
+</html>
